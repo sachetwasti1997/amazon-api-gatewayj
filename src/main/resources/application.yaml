@@ -1,0 +1,17 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: AUTH-SERVER
+          uri: ${AUTH_URL:http://localhost:8080}
+          predicates:
+            - Path=/api/v1/user/**,/api/v1/address/**
+
+  main:
+    web-application-type: reactive
+
+SECURE_KEY: ${SECURE_KEY_STR:8Xc5HXT4fRYeGL5uLyNgaGg4vtMldmLhjtIvD2gLoK4=}
