@@ -10,7 +10,10 @@ spring:
           uri: ${AUTH_URL:http://localhost:8080}
           predicates:
             - Path=/api/v1/user/**,/api/v1/address/**
-
+        - id: INVENTORY-SERVER
+          uri: ${INVENTORY_URL:http://localhost:8082}
+          predicates:
+            - Path=/api/v1/item/**
   main:
     web-application-type: reactive
 
