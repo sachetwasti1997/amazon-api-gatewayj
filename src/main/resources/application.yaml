@@ -18,6 +18,10 @@ spring:
           uri: ${ORDER_URL:http://localhost:8083}
           predicates:
             - Path=/api/v1/order/**
+        - id: PAYMENT-SERVER
+          uri: ${PAYMENT_URL:http://localhost:8084}
+          predicates:
+            - Path=/api/v1/payment/**
   main:
     web-application-type: reactive
 
