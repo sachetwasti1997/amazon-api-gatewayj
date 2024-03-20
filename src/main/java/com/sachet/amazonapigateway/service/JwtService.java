@@ -44,7 +44,9 @@ public class JwtService {
     }
 
     public Boolean validateToken(String token) {
-        var matcher = EMAIL_ADDRESS_PATTERN.matcher(extractUserName(token));
-        return extractExpirationDate(token).after(new Date()) && matcher.matches();
+        String userNameWithId = extractUserName(token);
+        var user = userNameWithId.split("\\|");
+        var matcher = EMAIL_ADDRESS_PATTERN.matcher(user[0]);
+        return user.length == 2 && extractExpirationDate(token).after(new Date()) && matcher.matches();
     }
 }

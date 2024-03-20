@@ -5,6 +5,12 @@ spring:
     name: API-GATEWAY
   cloud:
     gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
       routes:
         - id: AUTH-SERVER
           uri: ${AUTH_URL:http://localhost:8080}
